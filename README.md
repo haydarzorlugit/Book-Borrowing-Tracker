@@ -13,3 +13,7 @@ Developed using Node.js and Express, this project allows users to manage books a
 
 - Node.js
 - Express.js
+  
+## Frontend
+
+The frontend is built with React and communicates with the backend API using fetch requests.
