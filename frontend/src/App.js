@@ -42,6 +42,14 @@ function App() {
         fetchBooks();
     };
 
+    const deleteBook = async (id) => {
+        await fetch(`http://localhost:3000/books/${id}`, {
+            method: "DELETE",
+        });
+
+        fetchBooks();
+    };
+
     const addBorrower = async () => {
         await fetch("http://localhost:3000/borrowers", {
             method: "POST",
@@ -58,6 +66,14 @@ function App() {
 
         setBorrowerName("");
         setBookId("");
+
+        fetchBorrowers();
+    };
+
+    const deleteBorrower = async (id) => {
+        await fetch(`http://localhost:3000/borrowers/${id}`, {
+            method: "DELETE",
+        });
 
         fetchBorrowers();
     };
@@ -90,6 +106,10 @@ function App() {
                 {books.map((book) => (
                     <li key={book.id}>
                         {book.title} - {book.author} (ID: {book.id})
+
+                        <button onClick={() => deleteBook(book.id)}>
+                            Delete
+                        </button>
                     </li>
                 ))}
             </ul>
@@ -118,6 +138,10 @@ function App() {
                 {borrowers.map((b) => (
                     <li key={b.id}>
                         {b.name} borrowed book ID {b.bookId}
+
+                        <button onClick={() => deleteBorrower(b.id)}>
+                            Delete
+                        </button>
                     </li>
                 ))}
             </ul>
